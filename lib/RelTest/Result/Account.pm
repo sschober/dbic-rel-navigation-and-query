@@ -66,6 +66,20 @@ __PACKAGE__->add_columns(
 
 __PACKAGE__->set_primary_key("id");
 
+=head1 UNIQUE CONSTRAINTS
+
+=head2 C<account_no_key>
+
+=over 4
+
+=item * L</no>
+
+=back
+
+=cut
+
+__PACKAGE__->add_unique_constraint("account_no_key", ["no"]);
+
 =head1 RELATIONS
 
 =head2 orgunitaccounts
@@ -84,8 +98,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2014-10-08 13:10:09
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:toSzJcn+XawMtTVAaebZ4Q
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2014-10-08 13:16:26
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:d2UiG7r+CdVYfatf2HqSsA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

@@ -5,7 +5,7 @@ create database dbix_test;
 
 create table account (
   id serial primary key,
-  no varchar
+  no varchar unique
 );
 create type sourcetype as enum ( 'TYPE_A', 'TYPE_B');
 create table orgunit (
