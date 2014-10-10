@@ -5,12 +5,20 @@ use lib 'lib';
 use RelTest;
 
 my $schema  = RelTest->connect('dbi:Pg:database=dbix_test');
-my $account = $schema->resultset('Account')->search( {no => '999999'})->single();
+my $acctNo = '999999';
+my $sourceType = 'TYPE_A';
+
 my @typeAOrgUnits =
-grep {
-  $_->orgunitid->source eq "TYPE_A"
-} $account->orgunitaccounts();
+$schema->resultset("Orgunit")->search({
+    source => $sourceType,
+    'accountid.no' => $acctNo
+  },{
+    join => {
+        orgunitaccounts => 'accountid'
+    }
+  }
+)->all();
 
 map {
-  printf("%s\n", $_->orgunitid->name);
+  printf("%s\n", $_->name);
 } @typeAOrgUnits;
