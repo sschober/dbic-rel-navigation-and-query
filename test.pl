@@ -17,7 +17,7 @@ $schema->resultset("Orgunit")->search({
         orgunitaccounts => 'accountid'
     }
   }
-)->all();
+);
 
 map {
   printf("%s\n", $_->name);
